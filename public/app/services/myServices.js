@@ -53,23 +53,3 @@ app.factory('dataFactory', function($http) {
   };
   return myService;
 });
-
-app.directive('validPasswordC', function() {
-  return {
-    require: 'ngModel',
-    scope: {
-
-      reference: '=validPasswordC'
-
-    },
-    link: function(scope, elm, attrs, ngModel) {
-      ngModel.$validators.compareTo = function(modelValue) {
-          return modelValue == scope.otherModelValue;
-        };
-
-        scope.$watch("reference", function() {
-          ngModel.$validate();
-        });
-    }
-  }
-});
